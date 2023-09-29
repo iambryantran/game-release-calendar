@@ -3,6 +3,10 @@ var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
 
+// Local Storage Arrays for Calendar, Countdown, and Recent Search
+var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
+var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
+var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 
 function calendarAdd{
     // Game is added to local storage

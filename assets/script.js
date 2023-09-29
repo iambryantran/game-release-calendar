@@ -5,6 +5,30 @@ var filterBtnEl = document.getElementById('filterBtn');
 var countdownListEl = document.getElementById('countdown');
 var calendarEl = document.getElementById('calendar');
 
+// Local Storage Arrays for Calendar, Countdown, and Recent Search
+var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
+var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
+var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
+
+// GIVEN: I load the website I see the title, current date, search bar, countdown list, and calendar with my added games
+// WHEN: I click a filter by genre, date, or platform
+// THEN: The search results only displays those results
+// WHEN: I search for a game using the search bar
+// THEN: Then the second page loads with the search results and the recently searched section is updated
+// WHEN: I hit the add to calendar button on the results cards
+// THEN: The card is added to the corresponding date on the calendar
+// WHEN: I hit the add to countdown button on the results cards
+// THEN: The result is added to my countdown list
+// WHEN: I click on a recently searched result
+// THEN: The page immediately shows those results
+// WHEN: I click the X on the recently searched
+// THEN: It removes that result from the list
+// WHEN: I click the Calendar Button
+// THEN: The page goes back to the home page
+// WHEN: I click the remove from calendar button
+// THEN: The result is removed from my calendar 
+// WHEN: I click the remove from countdown button
+// THEN: The result is removed from my countdown 
 
 searchbarEl.addEventListener('click', search);
 function search{
@@ -25,13 +49,27 @@ function results {
     // Displays results
 };
 
+// CALENDAR BLOCK
 function displayCalendar {
     // Loads in list of saved games from local storage
     // Displays it on the page
 };
 
 function calendarRemove{
-    
+
+};
+
+// COUNTDOWN BLOCK
+function displayCountdown {
+
+};
+
+function countdown {
+    var currentDate = dayjs();
+    // releaseDate = 
+    // var daysDiff = releaseDate - currentDate orrrrr the other way around?
+
+    // Update textcontent with daysDiff
 };
 
 function countdownRemove{
