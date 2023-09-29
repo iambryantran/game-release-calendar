@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="reset/css" href="./reset.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/21.0.9/primer.css" integrity="sha512-36ON8XwCQa07KEM/UPtpEVDdoJAj2Az2RMP+Tv3jUqVmFL8hhL/jcuSx5AoaEJ4x+EMLwtmL5KVWxWuYyF0oSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header class="color-bg-open-emphasis p-2 ">
         <h1>Shiiiiet Exactly When This Game Come Out-Inator 9000</h1>
-        <h2>Today's Date</h2>
+        <h2 class="mx-auto text-center">Today's Date</h2>
     </header>
 
-    <section id="sidebar">
-        <input id="searchbar">
-        <button id="sortBtn">Sort</button>
-        <button id="filterBtn">Filter</button>
+    <section class="container mt-3 p-1" id="sidebar">
+        <form>
+            <input type="search" placeholder="Search..." id="searchbar">
+            <button type="submit">Search</button>
+        </form>
+
+
+        <!-- <form>
+            <input class="mb-3" id="searchbar">
+        </form> -->
+
+        <div class="sorting-btn">
+            <button id="sortBtn">Sort</button>
+            <button id="filterBtn">Filter</button>
+        </div>
+
         <div id="countdown">
             <!-- Countdown List items will be appended -->
         </div>
