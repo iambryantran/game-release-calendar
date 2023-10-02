@@ -31,31 +31,33 @@ var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 // THEN: The result is removed from my countdown 
 
 searchbarEl.addEventListener('click', search);
-function search{
+
+function search (){
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
     // Runs results()
 };
 
-function filter{
+function filter () {
     // Modifies URL parameters for IGDB
     // Runs results()
 };
 
-function results {
+function results (){
     // Uses modified URL to search IGDB
     // Loads results.html
     // Displays results
 };
 
-// CALENDAR BLOCK
-function displayCalendar {
+
+function displayCalendar () {
     // Loads in list of saved games from local storage
     // Displays it on the page
 };
 
-function calendarRemove{
+
+function calendarRemove() {
 
 };
 
@@ -72,6 +74,6 @@ function countdown {
     // Update textcontent with daysDiff
 };
 
-function countdownRemove{
+function countdownRemove () {
 
 };
