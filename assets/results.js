@@ -13,23 +13,23 @@ var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
 var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 
-function calendarAdd{
+function calendarAdd(){
     // Game is added to local storage
 };
 
-function countdownAdd{
+function countdownAdd(){
     // Game is added to local storage
 };
 
 searchbarEl.addEventListener('click', search);
-function search{
+function search(){
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
     // Runs results()
 };
 
-function displayRecents {
+function displayRecents() {
     // Takes recently searched list from local storage
     recentArr = JSON.parse(localStorage.getItem("localSearchList"))
     // Appends the list items to the div
@@ -37,7 +37,7 @@ function displayRecents {
 };
 
 recentSearchEl.addEventListener('click', recentSearch);
-function recentSearch {
+function recentSearch() {
     // Takes event.target
     // Uses string from recently searched local storage list
     // Modifies the URL parameters for IGDB
@@ -45,11 +45,11 @@ function recentSearch {
 };
 
 // Event listener on recently searched
-function recentRemove {
+function recentRemove() {
     // Removes item
 };
 
 // Event listener on home button
-function goHome {
+function goHome() {
     // Goes back to index.html
 };
