@@ -5,6 +5,25 @@ var filterBtnEl = document.getElementById('filterBtn');
 var countdownListEl = document.getElementById('countdown');
 var calendarEl = document.getElementById('calendar');
 
+const accessToken = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
+const clientID = 'iaqgas3gz2bncz00iuz5uxlb1ygybp';
+var queryURL;
+var baseURL = 'https://api.igdb.com/v4/';
+
+fetch('https://api.igdb.com/v4/games', {
+    method: 'POST',
+    headers: {
+        "Client-ID": clientID,
+        "Authorization": "Bearer " + accessToken
+    }
+})
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+    });
+
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
@@ -31,42 +50,43 @@ var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 // THEN: The result is removed from my countdown 
 
 searchbarEl.addEventListener('click', search);
-
-function search (){
+function search() {
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
     // Runs results()
 };
 
-function filter () {
+function filter(){
     // Modifies URL parameters for IGDB
     // Runs results()
 };
 
-function results (){
+function results() {
     // Uses modified URL to search IGDB
     // Loads results.html
     // Displays results
 };
 
-
-function displayCalendar () {
+// CALENDAR BLOCK
+function displayCalendar() {
     // Loads in list of saved games from local storage
     // Displays it on the page
 };
-
 
 function calendarRemove() {
 
 };
 
 // COUNTDOWN BLOCK
+
+
 function displayCountdown () {
 
 };
 
 function countdown () {
+
     var currentDate = dayjs();
     // releaseDate = 
     // var daysDiff = releaseDate - currentDate orrrrr the other way around?
@@ -74,6 +94,6 @@ function countdown () {
     // Update textcontent with daysDiff
 };
 
-function countdownRemove () {
+function countdownRemove() {
 
 };
