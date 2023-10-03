@@ -79,11 +79,14 @@ function calendarRemove() {
 };
 
 // COUNTDOWN BLOCK
-function displayCountdown() {
+
+
+function displayCountdown () {
 
 };
 
-function countdown() {
+function countdown () {
+
     var currentDate = dayjs();
     // releaseDate = 
     // var daysDiff = releaseDate - currentDate orrrrr the other way around?
