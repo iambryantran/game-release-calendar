@@ -3,6 +3,11 @@ var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
 
+
+const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
+var queryURL;
+var baseURL = 'https://api.igdb.com/v4';
+
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
@@ -26,6 +31,7 @@ function search{
 
 function displayRecents {
     // Takes recently searched list from local storage
+    recentArr = JSON.parse(localStorage.getItem("localSearchList"))
     // Appends the list items to the div
     // Displays the list on the page
 };
