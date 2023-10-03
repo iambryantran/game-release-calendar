@@ -4,25 +4,26 @@ var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var countdownListEl = document.getElementById('countdown');
 var calendarEl = document.getElementById('calendar');
+var searchBtnEl = document.getElementById('searchBtn');
 
 const accessToken = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
 const clientID = 'iaqgas3gz2bncz00iuz5uxlb1ygybp';
 var queryURL;
 var baseURL = 'https://api.igdb.com/v4/';
 
-fetch('https://api.igdb.com/v4/games', {
-    method: 'POST',
-    headers: {
-        "Client-ID": clientID,
-        "Authorization": "Bearer " + accessToken
-    }
-})
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        console.log(data);
-    });
+// fetch('https://api.igdb.com/v4/games', {
+//     method: 'POST',
+//     headers: {
+//         "Client-ID": clientID,
+//         "Authorization": "Bearer " + accessToken
+//     }
+// })
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         console.log(data);
+//     });
 
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
@@ -49,10 +50,15 @@ var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 // WHEN: I click the remove from countdown button
 // THEN: The result is removed from my countdown 
 
-searchbarEl.addEventListener('click', search);
-function search() {
+searchBtnEl.addEventListener('click', search);
+function search(event) {
+    event.preventDefault();
     // Takes input from search bar
+    var searchTerm = searchbarEl.value;
     // Modifies URL parameters for IGDB
+    console.log(searchTerm);
+    // queryURL = baseURL + ;//search parameters;
+
     // Saves input as a string to a recently searched local storage list
     // Runs results()
 };
@@ -79,14 +85,11 @@ function calendarRemove() {
 };
 
 // COUNTDOWN BLOCK
-
-
-function displayCountdown () {
+function displayCountdown() {
 
 };
 
-function countdown () {
-
+function countdown() {
     var currentDate = dayjs();
     // releaseDate = 
     // var daysDiff = releaseDate - currentDate orrrrr the other way around?
@@ -97,3 +100,33 @@ function countdown () {
 function countdownRemove() {
 
 };
+
+const localUrl = 'http://localhost:3001/api';
+
+    const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/api';
+
+    const fetchData = async () => {
+      var url = "https://api.igdb.com/v4/games";
+      var bodyContent =
+        "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;";
+
+      try {
+        const response = await fetch(deployedUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: url,
+            bodyContent: bodyContent,
+          }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchData();
