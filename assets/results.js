@@ -1,7 +1,9 @@
 var searchbarEl = document.getElementById('searchbar');
+var searchFormEl = document.getElementById('search-form')
 var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
+var clearEl = document.getElementById('clear-history');
 
 
 const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
@@ -31,8 +33,19 @@ function countdownAdd(){
     // Game is added to local storage
 };
 
-searchbarEl.addEventListener('click', search);
-function search(){
+searchFormEl.addEventListener('submit', search);
+
+
+function search(event){
+    console.log('hit')
+    event.preventDefault();
+    var searchedObj = document.querySelector('#searchbar').value;
+    console.log(searchedObj);
+    var obj = {
+        title: searchedObj,
+    }
+    recentArr.push(obj);
+    localStorage.setItem("localSearchList", JSON.stringify(recentArr));
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
@@ -46,24 +59,26 @@ function displayRecents() {
     // Displays the list on the page
 };
 
-recentSearchEl.addEventListener('click', recentSearch);
 var srcEl = recentArr;
 
 for (var i = 0; i < srcEl.length; i++) {
     var recentStuff = srcEl[i];
-
+    
     var customSearch = document.createElement('li');
     customSearch.textContent = recentStuff.title;
     customSearch.setAttribute('class', 'game-title')
     recentSearchEl.appendChild(customSearch);
 }
-function recentSearch() {
+function clearHis() {
+    localStorage.clear();
+    recentSearchEl.textContent='';
     // Takes event.target
     // Uses string from recently searched local storage list
     // Modifies the URL parameters for IGDB
     // Runs search()
 };
 
+clearEl.addEventListener('click', clearHis);
 // Event listener on recently searched
 function recentRemove() {
     // Removes item
@@ -73,3 +88,24 @@ function recentRemove() {
 function goHome() {
     // Goes back to index.html
 };
+
+
+
+
+function getParamsAndSearch() {
+    var queryString = window.location.search;
+    var urlSearchParams = new URLSearchParams(queryString);
+
+    var query = urlSearchParams.get('q');
+
+    if(!query) return;
+
+    console.log(query);
+
+    // search using query
+
+    // add to localStorage
+
+};
+
+getParamsAndSearch();
