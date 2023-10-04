@@ -37,6 +37,16 @@ function displayRecents() {
 };
 
 recentSearchEl.addEventListener('click', recentSearch);
+var srcEl = recentArr;
+
+for (var i = 0; i < srcEl.length; i++) {
+    var recentStuff = srcEl[i];
+
+    var customSearch = document.createElement('li');
+    customSearch.textContent = recentStuff.title;
+    customSearch.setAttribute('class', 'game-title')
+    recentSearchEl.appendChild(customSearch);
+}
 function recentSearch() {
     // Takes event.target
     // Uses string from recently searched local storage list
