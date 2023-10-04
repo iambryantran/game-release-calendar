@@ -3,6 +3,14 @@ body {
     background-image: url('https://w.wallhaven.cc/full/zy/wallhaven-zyo11j.jpg');
 }
 
+header {
+    background-color: #ccad86;
+}
+
+#homeBtn {
+    position: absolute;
+    margin-top: -85px;
+}
 
 #sidebar {
     max-width: 18% !important;
