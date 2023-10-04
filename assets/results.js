@@ -4,6 +4,7 @@ var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
 var clearEl = document.getElementById('clear-history');
+var homeBtnEl = document.getElementById('homeBtn');
 
 
 const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
@@ -85,7 +86,9 @@ function recentRemove() {
 };
 
 // Event listener on home button
+homeBtnEl.addEventListener('click', goHome)
 function goHome() {
+    location.replace('index.html')
     // Goes back to index.html
 };
 
