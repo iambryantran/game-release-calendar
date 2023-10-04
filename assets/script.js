@@ -64,13 +64,13 @@ searchBtnEl.addEventListener('click', search);
 function search(event) {
     event.preventDefault();
     var searchedObj = document.querySelector('#searchbar').value;
-    console.log(searchedObj);
-    var obj = {
-        title: searchedObj,
-    }
-    recentArr.push(obj);
-    localStorage.setItem("localSearchList", JSON.stringify(recentArr));
-    window.location.replace('./results.html');
+    // console.log(searchedObj);
+    // var obj = {
+    //     title: searchedObj,
+    // }
+    // recentArr.push(obj);
+    // localStorage.setItem("localSearchList", JSON.stringify(recentArr));
+    window.location.replace('./results.html?q=' + searchedObj);
     // Takes input from search bar
     // var searchTerm = searchbarEl.value;
     // Modifies URL parameters for IGDB
