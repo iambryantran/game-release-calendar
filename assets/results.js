@@ -13,6 +13,16 @@ var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
 var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 
+// Displays today's date
+function updateDate() {
+
+    // Updates the current day
+    var currentDay = dayjs().format('dddd, MMMM D');
+    $('#currentDate').text(currentDay);
+
+};
+updateDate();
+
 function calendarAdd(){
     // Game is added to local storage
 };
