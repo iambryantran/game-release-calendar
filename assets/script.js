@@ -30,6 +30,16 @@ var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
 var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
 
+// Displays today's date
+function updateDate() {
+
+    // Updates the current day
+    var currentDay = dayjs().format('dddd, MMMM D');
+    $('#currentDate').text(currentDay);
+
+};
+updateDate();
+
 // GIVEN: I load the website I see the title, current date, search bar, countdown list, and calendar with my added games
 // WHEN: I click a filter by genre, date, or platform
 // THEN: The search results only displays those results
