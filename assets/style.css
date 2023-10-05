@@ -1,10 +1,15 @@
 
 body {
-    background-image: url('https://w.wallhaven.cc/full/zy/wallhaven-zyo11j.jpg');
+    /* background-image: url('https://w.wallhaven.cc/full/zy/wallhaven-zyo11j.jpg'); */
+    background-image: url("fojsapo.jpg");
 }
 
 header {
     background-color: #ccad86;
+}
+
+.a-w {
+    border-image-repeat: repeat !important;
 }
 
 #homeBtn {
@@ -20,12 +25,12 @@ header {
 #searchbar {
     width: 50%;
     margin: 0px 0px 0px 20px;
-    border: 1px solid currentColor;
+    border-image-repeat: repeat !important;
 } 
 
 .sorting-btn {
-    margin: 4px 0px 0px 63px;
-    width: 50%;
+    margin-top: 10px;
+    margin-left: 14px;
 }
 
 form {
@@ -74,14 +79,14 @@ border-color: #1183d6;
 outline: none;
 }
 
-#sortBtn, #filterBtn {
+/* #sortBtn, #filterBtn {
     background-color: #fff;
     border: 0 solid #e2e8f0;
     border-radius: 1.5rem;
     box-sizing: border-box;
     color: #0d172a;
     cursor: pointer;
-    font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: 'Press Start 2P', cursive;
     font-size: .7rem;
     font-weight: 600;
     line-height: 1;
@@ -94,18 +99,26 @@ outline: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-}
+} */
 
 #sortBtn, #filterBtn {
-    background-color: #1e293b;
-    color: #fff;
+    
 }
 
 #favorites-list {
-    margin: 25px 0px 0px 25px;
+    margin: 25px 25px 25px 25px;
     width: 50%;
-    border: 1px solid currentColor;
+    font-size: 15px;
+    border-image-repeat: repeat !important;
+    /* border: 1px solid currentColor;
     text-align: center;
     box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-    border-radius: 1.5rem;
+    border-radius: 1.5rem; */
+}
+
+.game-Sav {
+    border-image-repeat: repeat !important;
+}
+.text-decoration {
+    font-family: 'Press Start 2P', cursive;
 }
