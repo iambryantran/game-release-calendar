@@ -5,6 +5,23 @@ var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
 var clearEl = document.getElementById('clear-history');
 var homeBtnEl = document.getElementById('homeBtn');
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+
+filterBtnEl.onclick = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+    modal.style.display = "none";
+    }
+}
 
 
 const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
