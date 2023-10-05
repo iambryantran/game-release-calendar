@@ -5,6 +5,23 @@ var filterBtnEl = document.getElementById('filterBtn');
 var countdownListEl = document.getElementById('countdown');
 var calendarEl = document.getElementById('calendar');
 var searchBtnEl = document.getElementById('searchBtn');
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+
+filterBtnEl.onclick = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+    modal.style.display = "none";
+    }
+}
 
 const accessToken = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
 const clientID = 'iaqgas3gz2bncz00iuz5uxlb1ygybp';
