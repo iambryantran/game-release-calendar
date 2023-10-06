@@ -12,6 +12,11 @@ header {
     border-image-repeat: repeat !important;
 }
 
+:root {
+    --fc-border-color: black;
+    --fc-daygrid-event-dot-width: 5px;
+}
+
 #homeBtn {
     position: absolute;
     margin-top: -85px;
