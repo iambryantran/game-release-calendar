@@ -46,6 +46,8 @@
         <h2 class="mx-auto text-center" id="currentDate">Today's Date</h2>
     </header>
 
+<main id="main">
+
     <section class="container mt-3 p-1" id="sidebar">
         <form class="nes-field">
             <input type="text" class="nes-input" placeholder="Search..." id="searchbar">
@@ -55,64 +57,81 @@
         <div class="sorting-btn">
             <button type="button" class="nes-btn is-primary" id="sortBtn">Sort</button>
             <button type="button" class="nes-btn is-success" id="filterBtn">Filter</button>
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                <span class="close">&times;</span>
-                <p type="button" class="nes-btn is-success" id="modal-filter">Filter By</p>
-                <div class="nes-container with-title is-centered" id="platform-filter">
-                    <p class="title">Platforms</p>
-                    <fieldset>
-                    
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
+        </div>
+
+
+        <div id="otherModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <p type="text" class="nes-btn is-primary">Sort By</p>
+            <div class="nes-container with-title is-centered" id="SRT-filter">
+                <p class="title"></p>
+                <div>
+                    <button type="button" class="sort-btn nes-btn ">Earliest Release</button>
+                    <button type="button" class="sort-btn nes-btn ">Latest Release</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <p type="text" class="nes-btn is-success" id="modal-filter">Filter By</p>
+            <div class="nes-container with-title is-centered" id="platform-filter">
+                <p class="title">Platforms</p>
+                <fieldset>
+                
+                    <div class="d-flex flex-sm-row flex-justify-between p-1">
                         <input type="checkbox"id="Playstation" name="Playstation" />
                         <label for="Playstation">Playstation</label>
                         <input type="checkbox"id="Xbox" name="Xbox" />
                         <label for="Xbox">Xbox</label>
-                        </div>
+                    </div>
 
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
-                            <input type="checkbox"id="PC" name="PC" />
-                            <label for="PC">PC</label>
-                            <input type="checkbox"id="Nintendo" name="Nintendo" />
-                            <label for="Nintendo">Nintendo</label>
-                        </div>
+                    <div class="d-flex flex-sm-row flex-justify-between p-1">
+                        <input type="checkbox"id="PC" name="PC" />
+                        <label for="PC">PC</label>
+                        <input type="checkbox"id="Nintendo" name="Nintendo" />
+                        <label for="Nintendo">Nintendo</label>
+                    </div>
 
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
-                            <input type="checkbox"id="VR" name="VR" />
-                            <label for="VR">VR</label>
-                            <input type="checkbox"id="Mobile" name="Mobile" />
-                            <label for="Mobile">Mobile</label>
-                        </div>
-                    </fieldset>
-                </div>
+                    <div class="d-flex flex-sm-row flex-justify-between p-1">
+                        <input type="checkbox"id="VR" name="VR" />
+                        <label for="VR">VR</label>
+                        <input type="checkbox"id="Mobile" name="Mobile" />
+                        <label for="Mobile">Mobile</label>
+                    </div>
+                </fieldset>
+            </div>
 
-                <div class="nes-container with-title is-centered" id="platform-filter">
-                    <p class="title">Platforms</p>
-                    <fieldset>
-                    
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
-                        <input type="checkbox"id="Playstation" name="Playstation" />
-                        <label for="Playstation">Playstation</label>
-                        <input type="checkbox"id="Xbox" name="Xbox" />
-                        <label for="Xbox">Xbox</label>
-                        </div>
-                    
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
-                            <input type="checkbox"id="PC" name="PC" />
-                            <label for="PC">PC</label>
-                            <input type="checkbox"id="Nintendo" name="Nintendo" />
-                            <label for="Nintendo">Nintendo</label>
-                        </div>
+            <div class="nes-container with-title is-centered" id="platform-filter-second">
+                <p class="title">Genres</p>
+                <fieldset>
+                
+                    <div class="d-flex flex-sm-row flex-justify-around p-1">
+                        <input type="checkbox"id="Action" name="Action" />
+                        <label for="Action">Action</label>
+                        <input type="checkbox"id="RPG" name="RPG" />
+                        <label for="RPG">RPG</label>
+                    </div>
+                
+                    <div class="d-flex flex-sm-row flex-justify-around p-1">
+                        <input type="checkbox"id="Adventure" name="Adventure" />
+                        <label for="Adventure">Adventure</label>
+                        <input type="checkbox"id="Multiplayer" name="Multiplayer" />
+                        <label for="Multiplayer">Multiplayer</label>
+                    </div>
 
-                        <div class="d-flex flex-sm-row flex-justify-between p-1">
-                            <input type="checkbox"id="VR" name="VR" />
-                            <label for="VR">VR</label>
-                            <input type="checkbox"id="Mobile" name="Mobile" />
-                            <label for="Mobile">Mobile</label>
-                        </div>
-                    </fieldset>
-                </div>
-                </div>
+                    <div class="d-flex flex-sm-row flex-justify-around p-1">
+                        <input type="checkbox"id="Survival" name="Survival" />
+                        <label for="Survival">Survival</label>
+                        <input type="checkbox"id="Strategy" name="Strategy" />
+                        <label for="Strategy">Strategy</label>
+                    </div>
+                </fieldset>
+            </div>
             </div>
         </div>
 
@@ -165,11 +184,15 @@
             </div>
         </div>
     </section>    
+    <div id='calendar'></div>
+        <!-- Day Cards will be appended -->
+    </div>
+    <footer>
+        <p>By Sepan, Bryan, Dalton, and Sam</p>
+    </footer>
+</main>
 
     <section id="main">
-        <div id='calendar'></div>
-            <!-- Day Cards will be appended -->
-        </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"

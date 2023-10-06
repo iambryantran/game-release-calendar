@@ -7,6 +7,11 @@ var clearEl = document.getElementById('clear-history');
 var homeBtnEl = document.getElementById('homeBtn');
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
+var otherModal = document.getElementById('otherModal');
+
+sortBtnEL.onclick = function () {
+    otherModal.style.display = "block";
+}
 
 
 filterBtnEl.onclick = function() {
@@ -15,11 +20,14 @@ filterBtnEl.onclick = function() {
 
 span.onclick = function() {
     modal.style.display = "none";
+    otherModal.style.display = "none";
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
     modal.style.display = "none";
+    } else if (event.target == otherModal) {
+        otherModal.style.display = "none";
     }
 }
 

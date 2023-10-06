@@ -22,6 +22,19 @@ header {
     margin-top: -85px;
 }
 
+#main {
+    max-width: 100% !important;
+
+}
+
+#calendar {
+    width: 2000px;
+    height: 1000px;
+    position: absolute;
+    right: 0;
+    top: 250px;
+}
+
 #sidebar {
     max-width: 18% !important;
     min-height: 100vh !important;
@@ -111,8 +124,20 @@ outline: none;
     margin-left: 30px;
 }
 
-.modal-content, #platform-filter {
+.modal-content, 
+#platform-filter,
+#platform-filter-second,
+#modalSrt,
+#SRT-filter {
     margin-top: 50px;
+}
+
+.sort-btn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    top: auto;
+    color: #1183d6;
 }
 
 
@@ -131,6 +156,10 @@ outline: none;
 }
 
 #modal-filter {
+    text-align: center;
+}
+
+#modal-sort {
     text-align: center;
 }
 
@@ -189,3 +218,8 @@ outline: none;
     margin-top: 15px;
 }
 
+.right {
+    right: 0;
+    width: 80%;
+    margin-top: 13px;
+}
