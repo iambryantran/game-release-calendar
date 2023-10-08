@@ -9,11 +9,14 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var otherModal = document.getElementById('otherModal');
 
+const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
+var queryURL;
+var baseURL = 'https://api.igdb.com/v4';
 
 const localUrl = 'http://localhost:3001/api';
-
 const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/api';
 
+// Fetch Data from API
 const fetchData = async (searchInput) => {
     const searchQuery = encodeURIComponent(searchInput);
     const fields = 'name,genres.name,artworks.url,cover.url,first_release_date,release_dates,platforms.name,summary';
@@ -38,10 +41,10 @@ const fetchData = async (searchInput) => {
     }
 };
 
+// Sort/Filter 
 sortBtnEL.onclick = function () {
     otherModal.style.display = "block";
 }
-
 
 filterBtnEl.onclick = function() {
     modal.style.display = "block";
@@ -60,10 +63,25 @@ window.onclick = function(event) {
     }
 }
 
+// Search
+searchFormEl.addEventListener('submit', search);
 
-const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
-var queryURL;
-var baseURL = 'https://api.igdb.com/v4';
+function search(event){
+    console.log('hit')
+    event.preventDefault();
+    var searchedObj = document.querySelector('#searchbar').value;
+    console.log(searchedObj);
+    var obj = {
+        title: searchedObj,
+    }
+    recentArr.push(obj);
+    localStorage.setItem("localSearchList", JSON.stringify(recentArr));
+    // Takes input from search bar
+    // Modifies URL parameters for IGDB
+    // Saves input as a string to a recently searched local storage list
+    // Runs results()
+    fetchData(searchedObj);
+};
 
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
@@ -88,26 +106,6 @@ function countdownAdd(){
     // Game is added to local storage
 };
 
-searchFormEl.addEventListener('submit', search);
-
-
-function search(event){
-    console.log('hit')
-    event.preventDefault();
-    var searchedObj = document.querySelector('#searchbar').value;
-    console.log(searchedObj);
-    var obj = {
-        title: searchedObj,
-    }
-    recentArr.push(obj);
-    localStorage.setItem("localSearchList", JSON.stringify(recentArr));
-    // Takes input from search bar
-    // Modifies URL parameters for IGDB
-    // Saves input as a string to a recently searched local storage list
-    // Runs results()
-    fetchData(searchedObj);
-};
-
 function displayRecents() {
     // Takes recently searched list from local storage
     recentArr = JSON.parse(localStorage.getItem("localSearchList"))
@@ -128,10 +126,6 @@ for (var i = 0; i < srcEl.length; i++) {
 function clearHis() {
     localStorage.clear();
     recentSearchEl.textContent='';
-    // Takes event.target
-    // Uses string from recently searched local storage list
-    // Modifies the URL parameters for IGDB
-    // Runs search()
 };
 
 clearEl.addEventListener('click', clearHis);
@@ -147,9 +141,6 @@ function goHome() {
     // Goes back to index.html
 };
 
-
-
-
 function getParamsAndSearch() {
     var queryString = window.location.search;
     var urlSearchParams = new URLSearchParams(queryString);
@@ -157,15 +148,12 @@ function getParamsAndSearch() {
     var query = urlSearchParams.get('q');
 
     if(!query) return;
-
     console.log(query);
 
     // search using query
     fetchData(query);
     // add to localStorage
-
 };
-
 getParamsAndSearch();
 
 
