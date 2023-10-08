@@ -16,7 +16,7 @@ const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/ap
 
 const fetchData = async (searchInput) => {
     const searchQuery = encodeURIComponent(searchInput);
-    const fields = 'name,genres,artworks,cover,first_release_date,platforms,summary';
+    const fields = 'name,genres.name,artworks.url,cover.url,first_release_date,release_dates,platforms.name,summary';
     const url = `https://api.igdb.com/v4/games/`;
 
     const urlForFetch = `${deployedUrl}?url=${url}&searchQuery=${searchQuery}&fields=${fields}`;
@@ -32,7 +32,7 @@ const fetchData = async (searchInput) => {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log(data); // Display search on screen
     } catch (error) {
         console.error('Error:', error);
     }
@@ -105,6 +105,7 @@ function search(event){
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
     // Runs results()
+    fetchData(searchedObj);
 };
 
 function displayRecents() {

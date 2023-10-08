@@ -152,7 +152,7 @@ const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/ap
 
 const fetchData = async () => {
     const searchQuery = encodeURIComponent('Super Mario');
-    const fields = 'name,genres,artworks,cover,first_release_date,platforms,summary';
+    const fields = 'name,genres.name,artworks.url,cover.url,first_release_date,platforms.name,summary';
     const url = `https://api.igdb.com/v4/games/`;
 
     const urlForFetch = `${deployedUrl}?url=${url}&searchQuery=${searchQuery}&fields=${fields}`;
