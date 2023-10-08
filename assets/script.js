@@ -9,10 +9,10 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var otherModal = document.getElementById('otherModal');
 
+// Sidebar
 sortBtnEL.onclick = function () {
     otherModal.style.display = "block";
 }
-
 
 filterBtnEl.onclick = function() {
     modal.style.display = "block";
@@ -31,24 +31,39 @@ window.onclick = function(event) {
     }
 }
 
+// Fetch Block
 const accessToken = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
 const clientID = 'iaqgas3gz2bncz00iuz5uxlb1ygybp';
 var queryURL;
 var baseURL = 'https://api.igdb.com/v4/';
 
-// fetch('https://api.igdb.com/v4/games', {
-//     method: 'POST',
-//     headers: {
-//         "Client-ID": clientID,
-//         "Authorization": "Bearer " + accessToken
-//     }
-// })
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
-//         console.log(data);
-//     });
+const localUrl = 'http://localhost:3001/api';
+
+const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/api';
+
+const fetchData = async () => {
+    const searchQuery = encodeURIComponent('Super Mario');
+    const fields = 'name,genres.name,artworks.url,cover.url,first_release_date,platforms.name,summary';
+    const url = `https://api.igdb.com/v4/games/`;
+
+    const urlForFetch = `${deployedUrl}?url=${url}&searchQuery=${searchQuery}&fields=${fields}`;
+
+    console.log(urlForFetch);
+
+    try {
+        const response = await fetch(urlForFetch, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        });
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
@@ -88,35 +103,8 @@ updateDate();
 searchBtnEl.addEventListener('click', search);
 function search(event) {
     event.preventDefault();
-    var searchedObj = document.querySelector('#searchbar').value;
-    // console.log(searchedObj);
-    // var obj = {
-    //     title: searchedObj,
-    // }
-    // recentArr.push(obj);
-    // localStorage.setItem("localSearchList", JSON.stringify(recentArr));
-    window.location.replace('./results.html?q=' + searchedObj);
-    // Takes input from search bar
-    // var searchTerm = searchbarEl.value;
-    // Modifies URL parameters for IGDB
-    // console.log(searchTerm);
-    // queryURL = baseURL + ;//search parameters;
-
-    // Saves input as a string to a recently searched local storage list
-    // recentArr.push(searchTerm);
-    // console.log(recentArr);
-    // Runs results()
-};
-
-function filter(){
-    // Modifies URL parameters for IGDB
-    // Runs results()
-};
-
-function results() {
-    // Uses modified URL to search IGDB
-    // Loads results.html
-    // Displays results
+    var searchedObj = document.querySelector('#searchbar').value; // Takes value from searchbar
+    window.location.replace('./results.html?q=' + searchedObj); // Adds it to our results page URL
 };
 
 // CALENDAR BLOCK
@@ -125,53 +113,14 @@ function displayCalendar() {
     // Displays it on the page
 };
 
-function calendarRemove() {
-
-};
-
 // COUNTDOWN BLOCK
-function displayCountdown() {
-
-};
 
 function countdown() {
     var currentDate = dayjs();
-    // releaseDate = 
-    // var daysDiff = releaseDate - currentDate orrrrr the other way around?
-
-    // Update textcontent with daysDiff
 };
 
 function countdownRemove() {
 
-};
-
-const localUrl = 'http://localhost:3001/api';
-
-const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/api';
-
-const fetchData = async () => {
-    const searchQuery = encodeURIComponent('Super Mario');
-    const fields = 'name,genres.name,artworks.url,cover.url,first_release_date,platforms.name,summary';
-    const url = `https://api.igdb.com/v4/games/`;
-
-    const urlForFetch = `${deployedUrl}?url=${url}&searchQuery=${searchQuery}&fields=${fields}`;
-
-    console.log(urlForFetch);
-
-    try {
-        const response = await fetch(urlForFetch, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        });
-
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
 };
 
 // fetchData();
