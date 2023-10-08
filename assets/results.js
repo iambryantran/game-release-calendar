@@ -9,6 +9,35 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var otherModal = document.getElementById('otherModal');
 
+
+const localUrl = 'http://localhost:3001/api';
+
+const deployedUrl = 'https://shielded-tundra-06273-a31f4de96ab9.herokuapp.com/api';
+
+const fetchData = async (searchInput) => {
+    const searchQuery = encodeURIComponent(searchInput);
+    const fields = 'name,genres,artworks,cover,first_release_date,platforms,summary';
+    const url = `https://api.igdb.com/v4/games/`;
+
+    const urlForFetch = `${deployedUrl}?url=${url}&searchQuery=${searchQuery}&fields=${fields}`;
+
+    console.log(urlForFetch);
+
+    try {
+        const response = await fetch(urlForFetch, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        });
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
 sortBtnEL.onclick = function () {
     otherModal.style.display = "block";
 }
@@ -131,9 +160,11 @@ function getParamsAndSearch() {
     console.log(query);
 
     // search using query
-
+    fetchData(query);
     // add to localStorage
 
 };
 
 getParamsAndSearch();
+
+
