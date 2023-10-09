@@ -3,6 +3,9 @@ var searchFormEl = document.getElementById('search-form')
 var sortBtnEL = document.getElementById('sortBtn');
 var filterBtnEl = document.getElementById('filterBtn');
 var recentSearchEl = document.getElementById('recently-searched');
+var searchResult = document.getElementById('results');
+var containerEl = document.getElementById('results-shown');
+var gameNames = document.getElementById('game-name');
 var clearEl = document.getElementById('clear-history');
 var homeBtnEl = document.getElementById('homeBtn');
 var modal = document.getElementById("myModal");
@@ -36,6 +39,7 @@ const fetchData = async (searchInput) => {
 
         const data = await response.json();
         console.log(data); // Display search on screen
+        displayResult (data);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -76,6 +80,10 @@ function search(event){
     }
     recentArr.push(obj);
     localStorage.setItem("localSearchList", JSON.stringify(recentArr));
+    var customSearch = document.createElement('li');
+    customSearch.textContent = obj.title;
+    customSearch.setAttribute('class', 'game-title nes-input')
+    recentSearchEl.appendChild(customSearch);
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
@@ -98,8 +106,29 @@ function updateDate() {
 };
 updateDate();
 
-function calendarAdd(){
+var displayResult = function (game, titleName) {
     // Game is added to local storage
+    if (game.length === 0) {
+        containerEl.textContent = 'No ' + searchbarEl + ' found.';
+        return;  
+    }
+
+    gameNames.textContent = titleName;
+
+    for (var i  = 0; i < game.length; i++) {
+        var objName = game[i].name;
+        console.log(objName);
+
+        var resultEl = document.createElement('div');
+        resultEl.setAttribute('class','nes-input game-Sav countdown-card d-flex flex-sm-row flex-justify-between p-1 color-border-accent-emphasis') 
+
+        var titleEl = document.createElement('span');
+        titleEl.textContent = objName;
+
+        resultEl.appendChild(titleEl);
+
+        containerEl.appendChild(resultEl);
+    }
 };
 
 function countdownAdd(){
@@ -120,7 +149,7 @@ for (var i = 0; i < srcEl.length; i++) {
     
     var customSearch = document.createElement('li');
     customSearch.textContent = recentStuff.title;
-    customSearch.setAttribute('class', 'game-title')
+    customSearch.setAttribute('class', 'game-title nes-input')
     recentSearchEl.appendChild(customSearch);
 }
 function clearHis() {

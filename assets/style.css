@@ -233,3 +233,10 @@ outline: none;
     width: 80%;
     margin-top: 13px;
 }
+
+.game-title {
+    border-image-repeat: repeat !important;
+    margin-top: 25px;
+    color: white;
+    background-color: #333333;
+}
