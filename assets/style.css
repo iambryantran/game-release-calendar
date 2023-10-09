@@ -32,11 +32,23 @@ footer {
 }
 
 #calendar {
-    width: 2000px;
-    height: 1000px;
+    width: 80vw;
+    height: 100vh;
     position: absolute;
     right: 0;
     top: 125px; 
+}
+
+#results {
+    width: 80vw;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 125px; 
+}
+
+.countdown-card {
+    margin-top: 25px;
 }
 
 #sidebar {
