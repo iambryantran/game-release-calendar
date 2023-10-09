@@ -39,6 +39,7 @@ const fetchData = async (searchInput) => {
 
         const data = await response.json();
         console.log(data); // Display search on screen
+        displayResult (data);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -79,12 +80,15 @@ function search(event){
     }
     recentArr.push(obj);
     localStorage.setItem("localSearchList", JSON.stringify(recentArr));
+    var customSearch = document.createElement('li');
+    customSearch.textContent = obj.title;
+    customSearch.setAttribute('class', 'game-title nes-input')
+    recentSearchEl.appendChild(customSearch);
     // Takes input from search bar
     // Modifies URL parameters for IGDB
     // Saves input as a string to a recently searched local storage list
     // Runs results()
     fetchData(searchedObj);
-    displayResult (searchedObj);
 };
 
 // Local Storage Arrays for Calendar, Countdown, and Recent Search
@@ -113,6 +117,7 @@ var displayResult = function (game, titleName) {
 
     for (var i  = 0; i < game.length; i++) {
         var objName = game[i].name;
+        console.log(objName);
 
         var resultEl = document.createElement('div');
         resultEl.setAttribute('class','nes-input game-Sav countdown-card d-flex flex-sm-row flex-justify-between p-1 color-border-accent-emphasis') 

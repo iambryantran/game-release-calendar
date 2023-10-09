@@ -8,6 +8,26 @@ var searchBtnEl = document.getElementById('searchBtn');
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var otherModal = document.getElementById('otherModal');
+// var eventArr = [
+//     {
+//         title: 'event1',
+//         start: '2023-10-09'
+//     },
+//     {
+//         title: 'event2',
+//         start: '2023-10-17',
+//     },
+// ];
+var eventArr = JSON.parse(localStorage.getItem('savedDate')) || [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+        events: eventArr
+    });
+    calendar.render();
+});
 
 // Sidebar
 sortBtnEL.onclick = function () {
