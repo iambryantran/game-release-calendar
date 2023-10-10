@@ -95,6 +95,7 @@ function search(event){
 var recentArr = JSON.parse(localStorage.getItem("localSearchList")) || [];
 var countdownArr = JSON.parse(localStorage.getItem("localCountdownList")) || [];
 var calendarArr = JSON.parse(localStorage.getItem("localCalendarList")) || [];
+var eventArr = JSON.parse(localStorage.getItem('savedDate')) || [];
 
 // Displays today's date
 function updateDate() {
@@ -117,21 +118,34 @@ var displayResult = function (game, titleName) {
 
     for (var i  = 0; i < game.length; i++) {
         var objName = game[i].name;
-        console.log(objName);
+        var objGenre = game[i].genres.name;
 
         var resultEl = document.createElement('div');
         resultEl.setAttribute('class','nes-input game-Sav countdown-card d-flex flex-sm-row flex-justify-between p-1 color-border-accent-emphasis') 
 
         var titleEl = document.createElement('span');
         titleEl.textContent = objName;
+        // document.body.style.backgroundImage = 'url('objGenre')'
+        var genresEl = document.createElement('h5');
+        genresEl.textContent = objGenre;
 
+        var addBtn = document.createElement('button');
+        addBtn.innerHTML = "add to calendar"
+
+        resultEl.appendChild(genresEl);
         resultEl.appendChild(titleEl);
+        resultEl.appendChild(addBtn);
+
+        addBtn.onclick = function () {
+            console.log('hit')
+        }
+        
 
         containerEl.appendChild(resultEl);
     }
 };
 
-function countdownAdd(){
+function addCal(){
     // Game is added to local storage
 };
 
