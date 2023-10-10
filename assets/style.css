@@ -58,13 +58,13 @@ footer {
 
 #searchbar {
     width: 50%;
-    margin: 0px 0px 0px 20px;
+    margin: 0px 0px 0px 4px;
     border-image-repeat: repeat !important;
 } 
 
 .sorting-btn {
     margin-top: 10px;
-    margin-left: 14px;
+    margin-left: 4px;
 }
 
 form {
@@ -181,7 +181,7 @@ outline: none;
 
 #clear-history {
     margin-top: 20px;
-    margin-left: 25px;
+    margin-left: 5px;
 }
 
 #fave-div {
@@ -191,8 +191,8 @@ outline: none;
 }
 
 #favorites-list {
-    margin: 25px 25px 25px 25px;
-    width: 75%;
+    margin: 15px 15px 15px 4px;
+    width: 85%;
     font-size: 14px;
     border-image-repeat: repeat !important;
 }
