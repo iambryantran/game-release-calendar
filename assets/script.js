@@ -7,6 +7,7 @@ var calendarEl = document.getElementById('calendar');
 var searchBtnEl = document.getElementById('searchBtn');
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close")[1];
 var otherModal = document.getElementById('otherModal');
 // var eventArr = [
 //     {
@@ -40,8 +41,11 @@ filterBtnEl.onclick = function() {
 }
 
 span.onclick = function() {
-    modal.style.display = "none";
     otherModal.style.display = "none";
+}
+
+span2.onclick = function() {
+    modal.style.display = "none"; 
 }
 
 window.onclick = function(event) {

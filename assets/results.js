@@ -10,6 +10,7 @@ var clearEl = document.getElementById('clear-history');
 var homeBtnEl = document.getElementById('homeBtn');
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close")[1]; 
 var otherModal = document.getElementById('otherModal');
 
 const APIKey = 'qzvy2pmwgpsruc8hr85h8hj1o7ymr3';
@@ -55,8 +56,11 @@ filterBtnEl.onclick = function() {
 }
 
 span.onclick = function() {
-    modal.style.display = "none";
     otherModal.style.display = "none";
+}
+
+span2.onclick = function() {
+    modal.style.display = "none"; 
 }
 
 window.onclick = function(event) {
