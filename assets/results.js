@@ -110,42 +110,66 @@ updateDate();
 var displayResult = function (game, titleName) {
     // Game is added to local storage
     if (game.length === 0) {
-        containerEl.textContent = 'No ' + searchbarEl + ' found.';
+        gameNames.textContent = 'No results found.';
         return;  
     }
+
+    containerEl.innerHTML = '';
 
     gameNames.textContent = titleName;
 
     for (var i  = 0; i < game.length; i++) {
         var objName = game[i].name;
-        var objGenre = game[i].genres.name;
+        var objGenre = game[i].genres[0].name;
 
         var resultEl = document.createElement('div');
-        resultEl.setAttribute('class','nes-input game-Sav countdown-card d-flex flex-sm-row flex-justify-between p-1 color-border-accent-emphasis') 
+        resultEl.setAttribute('class','nes-input game-Sav countdown-card d-flex flex-sm-column flex-justify-between p-1 color-border-accent-emphasis color-bg-accent-emphasis color-fg-on-emphasis') 
+        var date = new Date(game[i].first_release_date * 1000);
+        var formattedDate = date.toISOString().slice(0, 10);
+        console.log(formattedDate);
+        var info = `${JSON.stringify({title: encodeURIComponent(objName), start: formattedDate })}`
+        console.log(info)
 
-        var titleEl = document.createElement('span');
-        titleEl.textContent = objName;
-        // document.body.style.backgroundImage = 'url('objGenre')'
-        var genresEl = document.createElement('h5');
-        genresEl.textContent = objGenre;
+        var html = `
+        <div class="d-flex">
+            <img class="col-2" src='https:${game[i].cover.url}' alt='Cover image of ${objName}' />
+            <div class="col-10 p-4">
+                <h3>${objName}<h3>
+                <p>${objGenre}</p>
+                <p>${formattedDate}</p>
+                <button data-info=${info} class="nes-btn is-warning">add to calendar</button>
+            </div>
+        </div>
+        `
 
-        var addBtn = document.createElement('button');
-        addBtn.innerHTML = "add to calendar"
-
-        resultEl.appendChild(genresEl);
-        resultEl.appendChild(titleEl);
-        resultEl.appendChild(addBtn);
-
-        addBtn.onclick = function () {
-            console.log('hit')
-        }
+        resultEl.innerHTML = html;
         
 
         containerEl.appendChild(resultEl);
     }
 };
 
-function addCal(){
+
+$('#results-shown').on('click', '.nes-btn', function() {
+    var obj = $(this).attr('data-info');
+
+    console.log(obj);
+    console.log(JSON.parse(obj));
+    var val = JSON.parse(obj);
+    val.title = decodeURIComponent(val.title);
+
+    eventArr.push(val);
+
+    localStorage.setItem('savedDate', JSON.stringify(eventArr));
+
+});
+
+function calAdd () {
+    
+}
+
+function reFresh(){
+    containerEl = '';
     // Game is added to local storage
 };
 
@@ -198,5 +222,4 @@ function getParamsAndSearch() {
     // add to localStorage
 };
 getParamsAndSearch();
-
 

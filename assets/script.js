@@ -21,6 +21,7 @@ var otherModal = document.getElementById('otherModal');
 var eventArr = JSON.parse(localStorage.getItem('savedDate')) || [];
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log(eventArr);
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
