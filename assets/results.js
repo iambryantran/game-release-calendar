@@ -88,10 +88,7 @@ function search(event){
     customSearch.textContent = obj.title;
     customSearch.setAttribute('class', 'game-title nes-input')
     recentSearchEl.appendChild(customSearch);
-    // Takes input from search bar
-    // Modifies URL parameters for IGDB
-    // Saves input as a string to a recently searched local storage list
-    // Runs results()
+
     fetchData(searchedObj);
 };
 
@@ -226,4 +223,3 @@ function getParamsAndSearch() {
     // add to localStorage
 };
 getParamsAndSearch();
-

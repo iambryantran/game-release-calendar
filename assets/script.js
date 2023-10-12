@@ -9,16 +9,7 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[1];
 var otherModal = document.getElementById('otherModal');
-// var eventArr = [
-//     {
-//         title: 'event1',
-//         start: '2023-10-09'
-//     },
-//     {
-//         title: 'event2',
-//         start: '2023-10-17',
-//     },
-// ];
+
 var eventArr = JSON.parse(localStorage.getItem('savedDate')) || [];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -105,26 +96,6 @@ function updateDate() {
 };
 updateDate();
 
-// GIVEN: I load the website I see the title, current date, search bar, countdown list, and calendar with my added games
-// WHEN: I click a filter by genre, date, or platform
-// THEN: The search results only displays those results
-// WHEN: I search for a game using the search bar
-// THEN: Then the second page loads with the search results and the recently searched section is updated
-// WHEN: I hit the add to calendar button on the results cards
-// THEN: The card is added to the corresponding date on the calendar
-// WHEN: I hit the add to countdown button on the results cards
-// THEN: The result is added to my countdown list
-// WHEN: I click on a recently searched result
-// THEN: The page immediately shows those results
-// WHEN: I click the X on the recently searched
-// THEN: It removes that result from the list
-// WHEN: I click the Calendar Button
-// THEN: The page goes back to the home page
-// WHEN: I click the remove from calendar button
-// THEN: The result is removed from my calendar 
-// WHEN: I click the remove from countdown button
-// THEN: The result is removed from my countdown 
-
 searchBtnEl.addEventListener('click', search);
 function search(event) {
     event.preventDefault();
@@ -132,20 +103,6 @@ function search(event) {
     window.location.replace('./results.html?q=' + searchedObj); // Adds it to our results page URL
 };
 
-// CALENDAR BLOCK
-function displayCalendar() {
-    // Loads in list of saved games from local storage
-    // Displays it on the page
-};
-
-// COUNTDOWN BLOCK
-
 function countdown() {
     var currentDate = dayjs();
 };
-
-function countdownRemove() {
-
-};
-
-// fetchData();
